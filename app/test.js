@@ -1,5 +1,5 @@
 import {getColor,getPairNumber} from './colorCoder.js'	 
-function test(){
+ function test(){
 			pairNumber = 4;
             let testPair1 = getColor(pairNumber);
             console.log(`[In]Pair Number: ${pairNumber},[Out] Colors:${testPair1}`);
