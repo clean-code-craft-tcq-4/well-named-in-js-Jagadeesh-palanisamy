@@ -1,25 +1,16 @@
-
-const MajorColorNames = [
-    "WHITE", "RED", "BLACK", "YELLOW", "VIOLET"
-];
-const MinorColorNames = [
-	"BLUE", "ORANGE", "GREEN", "BROWN", "SLATE"
-];
-
-function ColorPair(){
-           this.majorColor;
-           this.minorColor;
-}
-
-ColorPair.prototype.toString=function(){
+const majorColors = ["WHITE", "RED", "BLACK", "YELLOW", "VIOLET"];
+const minorColors = ["BLUE", "ORANGE", "GREEN", "BROWN", "SLATE"];
+function colorPair(){
+           this.majorColor;           
+		   this.minorColor;
+		   }
+colorPair.prototype.toString=function(){
 	return `MajorColor:${this.majorColor},MinorColr:${this.minorColor}`;
 }
-
-function getColorFromPairNumber(pairNumber)
+function getColor(pairNumber)
 {
-	let minorSize = MajorColorNames.length;
-	let majorSize = MinorColorNames.length;
-	
+	let minorSize = majorColors.length;
+	let majorSize = minorColors.length;
 	if (pairNumber < 1 || pairNumber > minorSize * majorSize)
  	{
  		throw `Argument PairNumber:${pairNumber} is outside the allowed range` 
@@ -27,40 +18,32 @@ function getColorFromPairNumber(pairNumber)
 	let zeroBasedPairNumber = pairNumber - 1;
     let majorIndex = parseInt (zeroBasedPairNumber / minorSize);
     let minorIndex = parseInt(zeroBasedPairNumber % minorSize);
-	let  pair = new ColorPair();
-	pair.majorColor = MajorColorNames[majorIndex];
-	pair.minorColor = MinorColorNames[minorIndex];
+	let  pair = new colorPair();
+	pair.majorColor = majorColors[majorIndex];
+	pair.minorColor = minorColors[minorIndex];
 	return pair;
 }
-
-function getPairNumberFromColor(pair)
+function getPairNumber(pair)
         {
         let majorIndex = -1;
-        for (let i = 0; i < MajorColorNames.length; i++)
-            {
-                if (MajorColorNames[i] == pair.majorColor)
+        for (let i = 0; i < majorColors.length; i++){
+                if (majorColors[i] == pair.majorColor)
                 {
                     majorIndex = i;
                     break;
-                }
-            }
-
-        let minorIndex = -1;
-            for (let i = 0; i < MinorColorNames.length; i++)
+                }}
+let minorIndex = -1;
+            for (let i = 0; i < minorColors.length; i++)
             {
-                if (MinorColorNames[i] == pair.minorColor)
+                if (minorColors[i] == pair.minorColor)
                 {
                     minorIndex = i;
                     break;
                 }
             }
-    
-        if (majorIndex == -1 || minorIndex == -1)
+    if (majorIndex == -1 || minorIndex == -1)
             {
                 throw `Unknown Colors:${pair.toString()}`;
             }
-
-        return (majorIndex * MinorColorNames.length) + (minorIndex + 1);
+     return (majorIndex * minorColors.length) + (minorIndex + 1);
 	 }
-	 
-
