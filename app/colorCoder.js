@@ -47,3 +47,4 @@ let minorIndex = -1;
             }
      return (majorIndex * minorColors.length) + (minorIndex + 1);
 	 }
+export { majorColors ,minorColors,};
